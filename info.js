@@ -1,10 +1,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js';
-
 import {
   getFirestore,
-  query,
-  doc,
-  getDoc,
   getDocs,
   collection
 } from 'https://www.gstatic.com/firebasejs/9.8.1/firebase-firestore.js';
@@ -22,7 +18,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-function AddItemToTable(name, email, number, serialNo, message) {
+function AddItemToTable(name, email, number, time, message) {
   let tbody = document.getElementById('tbody');
 
   let trow = document.createElement('tr');
@@ -32,7 +28,7 @@ function AddItemToTable(name, email, number, serialNo, message) {
   let td4 = document.createElement('td');
   let td5 = document.createElement('td');
 
-  td1.innerHTML = serialNo;
+  td1.innerHTML = time;
   td2.innerHTML = name;
   td3.innerHTML = email;
   td4.innerHTML = number;
@@ -56,7 +52,7 @@ function AddAllItemsToTable(client) {
       element.Name,
       element.Email,
       element.PhoneNumber,
-      element.Sno,
+      element.Time,
       element.Message
     );
   });
